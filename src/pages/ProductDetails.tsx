@@ -3,8 +3,6 @@ import { Button } from '@/components/ui/button';
 import { useGetSingleProductQuery } from '@/redux/api/apiSlice';
 import { addToCart } from '@/redux/features/cart/cartSlice';
 import { useAppDispatch } from '@/redux/hooks';
-import { IProduct } from '@/types/globalTypes';
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function ProductDetails() {
@@ -13,7 +11,7 @@ export default function ProductDetails() {
 
   const { id } = useParams();
 
-  const {data: product, isError, isLoading, error} = useGetSingleProductQuery(id);
+  const {data: product} = useGetSingleProductQuery(id);
 
   return (
     <>
@@ -32,7 +30,7 @@ export default function ProductDetails() {
           <Button onClick={() => dispatch(addToCart(product!))}>Add to cart</Button>
         </div>
       </div>
-      <ProductReview />
+      <ProductReview id={id!} />
     </>
   );
 }
