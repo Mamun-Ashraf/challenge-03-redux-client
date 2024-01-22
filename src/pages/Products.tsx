@@ -7,16 +7,8 @@ import { useGetProductsQuery } from '@/redux/api/apiSlice';
 import { setPriceRange, toggleState } from '@/redux/features/products/productSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { IProduct } from '@/types/globalTypes';
-// import { useEffect, useState } from 'react';
 
 export default function Products() {
-
-  // const [data, setData] = useState<IProduct[]>([]);
-  // useEffect(() => {
-  //   fetch('./data.json')
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data));
-  // }, []);
 
   const {data, isLoading} = useGetProductsQuery(undefined);
 
